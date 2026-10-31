@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caucasus Courier – Chechnya News</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#f4efe6;--card:#fffdf8;--ink:#1b2320;--mut:#6a726d;--acc:#b3202e;--gold:#a9792b;--line:#ddd3c0;--hero1:#10342b;--hero2:#1d1a16;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1512;--card:#17201b;--ink:#ece6d8;--mut:#9aa59d;--acc:#e0505c;--gold:#d9a548;--line:#2a372f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1512;--card:#17201b;--ink:#ece6d8;--mut:#9aa59d;--acc:#e0505c;--gold:#d9a548;--line:#2a372f}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
+header{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#f3ead7;padding:28px 20px 0;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;inset:auto 0 0 0;height:70px;background:linear-gradient(135deg,transparent 49%,var(--bg) 50%) 0 0/60px 70px repeat-x;opacity:.9}
+.wrap{max-width:1100px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font:900 clamp(30px,6vw,56px)/1 "Playfair Display",Georgia,serif;margin:18px 0 6px;letter-spacing:-.5px}
+h1 span{color:var(--gold)}
+.tag{margin:0 0 34px;color:#cdbf9f;max-width:620px}
+.lang button{background:transparent;border:1px solid #cdbf9f66;color:#f3ead7;padding:6px 12px;border-radius:99px;cursor:pointer;font:600 13px Inter,sans-serif;margin-left:6px}
+.lang button.on{background:var(--gold);border-color:var(--gold);color:#1b1408}
+.ticker{background:var(--acc);color:#fff;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600}
+.ticker div{display:inline-block;padding:8px 0;animation:mq 60s linear infinite}
+.ticker span{margin:0 28px}.ticker span:before{content:"◆ ";opacity:.7}
+@keyframes mq{to{transform:translateX(-50%)}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:12px 16px}
+nav button{flex:none;background:var(--card);color:var(--ink);border:1px solid var(--line);padding:8px 16px;border-radius:99px;cursor:pointer;font:600 14px Inter,sans-serif}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{padding:24px 16px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:6px;padding:20px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #0002}
+.card.lead{grid-column:1/-1;background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#f3ead7;border-color:var(--c)}
+.card.lead h2{font-size:clamp(26px,4vw,38px)}.card.lead p,.card.lead .meta{color:#cdbf9f}
+.badge{font:600 11px Inter;letter-spacing:1.3px;text-transform:uppercase;color:var(--c)}
+.card.lead .badge{color:var(--gold)}
+h2{font:700 21px/1.2 "Playfair Display",Georgia,serif;margin:8px 0}
+p{margin:0 0 14px;color:var(--mut)}
+.meta{margin-top:auto;display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--mut)}
+a{color:inherit;font-weight:600;text-decoration:none;border-bottom:2px solid var(--c)}
+footer{max-width:1100px;margin:30px auto;padding:20px 16px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="top"><strong style="letter-spacing:3px;font-size:12px;color:var(--gold)" id="dt"></strong>
+<div class="lang"><button data-l="en">EN</button><button data-l="ru">РУ</button><button data-l="de">DE</button></div></div>
+<h1>Caucasus <span>Courier</span></h1><p class="tag" id="tag"></p>
+</div></header>
+<div class="ticker"><div id="tk"></div></div>
+<nav><div class="wrap" id="nav"></div></nav>
+<main class="wrap"><div class="grid" id="grid"></div></main>
+<footer id="ft"></footer>
+<script>
+var UI={en:{dt:"CHECHEN REPUBLIC · GROZNY",tag:"Kadyrov, Putin and the Republic’s politics, money, faith and people – in one place.",all:"All",read:"Source →",ft:"Snapshot compiled on 26 Oct 2026 from freely available reports; headlines are summarised in our own words and link to the original publishers. Some outlets are state-linked, some independent or foreign – read several. Figures marked as claims are unverified."},
+ru:{dt:"ЧЕЧЕНСКАЯ РЕСПУБЛИКА · ГРОЗНЫЙ",tag:"Кадыров, Путин и всё о политике, деньгах, вере и людях республики – в одном месте.",all:"Все",read:"Источник →",ft:"Подборка составлена 26.10.2026 по открытым источникам; заголовки пересказаны своими словами и ведут на оригиналы. Среди источников есть государственные, независимые и зарубежные – читайте несколько. Заявления отмечены как непроверенные."},
+de:{dt:"REPUBLIK TSCHETSCHENIEN · GROSNY",tag:"Kadyrow, Putin und die Republik – Politik, Geld, Glaube und Menschen an einem Ort.",all:"Alle",read:"Quelle →",ft:"Momentaufnahme vom 26.10.2026 aus frei verfügbaren Berichten; Meldungen sind in eigenen Worten zusammengefasst und verlinken auf die Originale. Quellen sind teils staatsnah, teils unabhängig oder ausländisch – bitte mehrere lesen. Als Behauptung gekennzeichnete Zahlen sind ungeprüft."}};
+var CAT={politics:{c:"#b3202e",en:"Politics",ru:"Политика",de:"Politik"},finance:{c:"#a9792b",en:"Finance",ru:"Финансы",de:"Finanzen"},business:{c:"#1f7a5a",en:"Business",ru:"Бизнес",de:"Wirtschaft"},people:{c:"#3b6fb0",en:"People",ru:"Люди",de:"Personen"},religion:{c:"#7a4aa3",en:"Religion",ru:"Религия",de:"Religion"},war:{c:"#5c5f57",en:"War & Security",ru:"Война и безопасность",de:"Krieg & Sicherheit"}};
+var N=[
+{k:"politics",d:"2026-09-21",u:"https://georgiatoday.ge/ramzan-kadyrov-wins-chechnya-election-with-99-85-of-vote/",s:"Georgia Today",
+ t:{en:"Kadyrov wins new term with 99.85%",ru:"Кадыров переизбран с 99,85 % голосов",de:"Kadyrow mit 99,85 % wiedergewählt"},
+ b:{en:"Official results put Kadyrov far ahead of his two rivals, who got 0.05% each – above his 2021 record.",ru:"По официальным данным, соперники получили по 0,05 %; результат превысил рекорд 2021 года.",de:"Laut offiziellen Zahlen erhielten seine beiden Gegenkandidaten je 0,05 % – mehr als sein Rekord von 2021."}},
+{k:"politics",d:"2026-04",u:"https://oc-media.org/putin-backs-kadyrovs-nomination-for-a-new-term/",s:"OC Media",
+ t:{en:"Putin backs Kadyrov’s new bid",ru:"Путин поддержал выдвижение Кадырова",de:"Putin unterstützt Kadyrows Kandidatur"},
+ b:{en:"In April Putin said he hoped Chechens would support Kadyrov in September’s vote.",ru:"В апреле Путин выразил надежду, что жители республики поддержат Кадырова на сентябрьских выборах.",de:"Im April hoffte Putin, die Tschetschenen würden Kadyrow bei der Septemberwahl unterstützen."}},
+{k:"politics",d:"2026",u:"https://www.caucasianknot.org/articles/76587",s:"Caucasian Knot",
+ t:{en:"Kadyrov skips top of United Russia Duma list",ru:"Кадыров не возглавил список «Единой России»",de:"Kadyrow führt Duma-Liste erstmals nicht an"},
+ b:{en:"First time in 19 years he doesn’t lead the party’s regional list; PM Magomed Daudov is fourth.",ru:"Впервые за 19 лет; премьер Магомед Даудов – на четвёртом месте.",de:"Erstmals seit 19 Jahren; Premier Magomed Daudow steht auf Platz vier."}},
+{k:"finance",d:"2026-01",u:"https://runews24.ru/grozny/13/01/2026/byudzhet-chechni-popolnyat-na-60-mlrd-rublej-iz-federalnoj-kaznyi-na-fone-nizkix-zarplat-v-regione",s:"RuNews24",
+ t:{en:"Record federal subsidies for 2026",ru:"Рекордные федеральные дотации на 2026 год",de:"Rekord-Bundeszuschüsse für 2026"},
+ b:{en:"Chechnya is reportedly set to receive 58.9 bn rubles in equalisation grants – well above earlier plans.",ru:"По сообщениям, Чечне выделят 58,9 млрд руб. дотаций на выравнивание – заметно больше, чем планировалось.",de:"Tschetschenien soll laut Berichten 58,9 Mrd. Rubel Ausgleichszuweisungen erhalten – deutlich mehr als geplant."}},
+{k:"business",d:"2025-11",u:"https://xn--90aivcdt6dxbc.xn--p1ai/articles/news/na-razvitie-oez-groznyy-vydelyat-1-3-mlrd-rubley/",s:"Russian government news",
+ t:{en:"Federal funds for Grozny special economic zone",ru:"Федеральные средства для ОЭЗ «Грозный»",de:"Bundesmittel für Sonderwirtschaftszone Grosny"},
+ b:{en:"Moscow allots 1.3 bn rubles to develop the zone’s infrastructure.",ru:"Правительство выделило 1,3 млрд руб. на развитие инфраструктуры ОЭЗ.",de:"Moskau stellt 1,3 Mrd. Rubel für die Infrastruktur der Zone bereit."}},
+{k:"business",d:"2026-04",u:"https://oc-media.org/putin-backs-kadyrovs-nomination-for-a-new-term/",s:"OC Media",
+ t:{en:"Kadyrov touts top regional growth (claim)",ru:"Кадыров заявил о лидерстве по росту ВРП",de:"Kadyrow rühmt Spitzenwachstum (Behauptung)"},
+ b:{en:"He told Putin 2024 regional output grew 122.6% vs 104.5% nationally.",ru:"Он сообщил Путину о росте ВРП в 2024 году на 122,6 % против 104,5 % по России.",de:"Er sagte Putin, die Wirtschaftsleistung sei 2024 um 122,6 % gewachsen, landesweit um 104,5 %."}},
+{k:"people",d:"2026",u:"https://www.themoscowtimes.com/2026/08/06/kadyrov-appoints-20-year-old-son-as-acting-deputy-prime-minister-of-chechnya",s:"The Moscow Times",
+ t:{en:"Kadyrov names 20-year-old son acting deputy PM",ru:"Кадыров назначил 20-летнего сына врио вице-премьера",de:"Kadyrow macht 20-jährigen Sohn zum kommissarischen Vizepremier"},
+ b:{en:"Akhmat Kadyrov keeps the sports ministry; the move fuels succession and health speculation.",ru:"Ахмат Кадыров сохраняет пост министра спорта; назначение подогрело слухи о преемнике и здоровье главы.",de:"Achmat Kadyrow bleibt Sportminister; der Schritt nährt Spekulationen über Nachfolge und Gesundheit."}},
+{k:"people",d:"2026-10-10",u:"https://www.azernews.az/nation/265340.html",s:"Azernews",
+ t:{en:"Kadyrov lunches with Azerbaijan’s Aliyev",ru:"Кадыров пообедал с Алиевым",de:"Kadyrow trifft Alijew zum Mittagessen"},
+ b:{en:"The two met on October 10, according to Azerbaijani media.",ru:"Встреча состоялась 10 октября, сообщают азербайджанские СМИ.",de:"Das Treffen fand am 10. Oktober statt, berichten aserbaidschanische Medien."}},
+{k:"religion",d:"",u:"https://en.wikipedia.org/wiki/Akhmad_Kadyrov_Mosque",s:"Wikipedia",
+ t:{en:"The “Heart of Chechnya” mosque",ru:"Мечеть «Сердце Чечни»",de:"Die „Herz Tschetscheniens“-Moschee"},
+ b:{en:"Grozny’s Akhmad Kadyrov Mosque is among Russia’s largest, holding around 10,000 worshippers.",ru:"Мечеть имени Ахмата Кадырова в Грозном – одна из крупнейших в России, вмещает около 10 тыс. верующих.",de:"Die Achmat-Kadyrow-Moschee in Grosny zählt zu Russlands größten und fasst rund 10.000 Gläubige."}},
+{k:"religion",d:"",u:"https://www.asianews.it/en/north-asia/russia/chechnya-s-religious-policy",s:"AsiaNews",
+ t:{en:"Islamic education expands",ru:"Расширяется исламское образование",de:"Islamische Bildung wird ausgebaut"},
+ b:{en:"Grozny adds religious schools and invites foreign scholars; the grand mufti also advises Kadyrov.",ru:"В Грозном растёт число религиозных школ, приглашают зарубежных богословов; муфтий – советник Кадырова.",de:"Grosny eröffnet mehr Religionsschulen und lädt ausländische Gelehrte ein; der Großmufti berät zugleich Kadyrow."}},
+{k:"war",d:"",u:"https://censor.net/en/news/4018046/kadyrov-is-avoiding-sending-large-numbers-of",s:"Censor.net (citing The Economist)",
+ t:{en:"Kadyrov’s 70,000-fighters claim questioned",ru:"Заявление Кадырова о 70 тыс. бойцов под вопросом",de:"Kadyrows 70.000-Kämpfer-Behauptung angezweifelt"},
+ b:{en:"The Economist notes he avoids mass deployment of Chechens; the Akhmat unit recruits mostly outside the republic.",ru:"По оценке The Economist, он избегает массовой отправки чеченцев; «Ахмат» набирает в основном за пределами республики.",de:"Laut The Economist vermeidet er Masseneinsätze von Tschetschenen; „Achmat“ rekrutiert meist außerhalb."}}
+];
+var L="en",F="all";
+try{var sv=localStorage.getItem("lang");if(sv&&UI[sv])L=sv}catch(e){}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function draw(){
+ document.documentElement.lang=L;var u=UI[L];
+ document.getElementById("dt").textContent=u.dt;document.getElementById("tag").textContent=u.tag;document.getElementById("ft").textContent=u.ft;
+ document.querySelectorAll(".lang button").forEach(function(b){b.className=b.dataset.l===L?"on":""});
+ var h='<button data-f="all" class="'+(F==="all"?"on":"")+'">'+u.all+'</button>';
+ for(var k in CAT)h+='<button data-f="'+k+'" class="'+(F===k?"on":"")+'">'+CAT[k][L]+'</button>';
+ document.getElementById("nav").innerHTML=h;
+ var tk=N.map(function(n){return "<span>"+esc(n.t[L])+"</span>"}).join("");
+ document.getElementById("tk").innerHTML=tk+tk;
+ var list=N.filter(function(n){return F==="all"||n.k===F});
+ document.getElementById("grid").innerHTML=list.map(function(n,i){
+  return '<article class="card'+(i===0&&F==="all"?" lead":"")+'" style="--c:'+CAT[n.k].c+'"><span class="badge">'+CAT[n.k][L]+'</span><h2>'+esc(n.t[L])+'</h2><p>'+esc(n.b[L])+'</p><div class="meta"><span>'+esc(n.s)+(n.d?" · "+n.d:"")+'</span><a href="'+n.u+'" target="_blank" rel="noopener">'+u.read+'</a></div></article>'}).join("");
+}
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.l){L=b.dataset.l;try{localStorage.setItem("lang",L)}catch(x){}}
+ if(b.dataset.f)F=b.dataset.f;draw()});
+draw();
+</script>
+</body>
+</html>
