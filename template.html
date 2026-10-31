@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caucasus Courier – Chechnya News</title>
+<style>
+:root{--bg:#f4efe6;--card:#fffdf8;--ink:#1b2320;--mut:#6a726d;--acc:#b3202e;--gold:#a9792b;--line:#ddd3c0;--h1:#10342b;--h2:#1d1a16;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1512;--card:#17201b;--ink:#ece6d8;--mut:#9aa59d;--acc:#e0505c;--gold:#d9a548;--line:#2a372f;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,"Times New Roman",serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header{background:linear-gradient(135deg,var(--h1),var(--h2));color:#f3ead7;padding:26px 0 30px}
+header small{letter-spacing:3px;font:600 12px system-ui,sans-serif;color:#d9a548}
+h1{margin:6px 0 4px;font-size:clamp(34px,7vw,56px);line-height:1.05}
+h1 span{color:#e0505c}
+header p{margin:0;opacity:.85;font:15px system-ui,sans-serif}
+nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 18px}
+nav button{font:600 13px system-ui,sans-serif;border:1px solid var(--line);background:none;color:var(--ink);padding:6px 14px;border-radius:99px;cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+main{padding:26px 18px 10px}
+.lead{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:10px;padding:24px;margin-bottom:26px}
+.lead h2{font-size:clamp(26px,5vw,38px);line-height:1.15;margin:6px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+article.s{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+article h2{font-size:21px;line-height:1.25;margin:6px 0 10px}
+article p,.lead p{margin:0 0 10px;font-size:16px}
+.meta{font:600 12px system-ui,sans-serif;color:var(--mut);letter-spacing:.5px;text-transform:uppercase}
+.tag{display:inline-block;font:700 11px system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:2px 9px;border-radius:4px;margin-right:6px}
+.politics{background:#b3202e}.security{background:#5c5f57}.society{background:#7a4aa3}.people{background:#3b6fb0}.world{background:#1f7a5a}
+.src{font:600 13px system-ui,sans-serif;color:var(--acc);text-decoration:none}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin:26px 0}
+.facts h3{margin:0 0 10px;font-size:20px}
+.facts ul{margin:0;padding-left:20px;font-size:16px}
+.facts li{margin-bottom:6px}
+.brief{border-top:1px solid var(--line);padding:14px 0}
+.brief:first-of-type{border:0}
+.brief b{font-size:17px}
+footer{padding:20px 18px 40px;color:var(--mut);font:13px/1.6 system-ui,sans-serif;text-align:center}
+.hide{display:none}
+.sec{font-size:24px;margin:8px 0 14px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+.sec small{font:600 12px system-ui,sans-serif;color:var(--mut);letter-spacing:.5px}
+.hls{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:30px}
+.hl{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.hl a{color:var(--ink);font-weight:700;line-height:1.3;text-decoration:none;display:block;margin-bottom:6px}
+.hl a:hover{color:var(--acc)}
+.hl p{margin:6px 0 0;font-size:14px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<small>CHECHEN REPUBLIC · GROZNY · UPDATED {{UPDATED}}</small>
+<h1>Caucasus <span>Courier</span></h1>
+<p>Kadyrov, the Kremlin and daily life in the Republic – the stories, written out in full.</p>
+</div></header>
+
+<nav><div class="wrap" id="nav">
+<button class="on" data-f="all">All</button>
+<button data-f="politics">Politics</button>
+<button data-f="security">Security</button>
+<button data-f="society">Society</button>
+<button data-f="people">People</button>
+<button data-f="world">World</button>
+</div></nav>
+
+<main class="wrap">
+
+<section data-c="latest">
+<h2 class="sec">Latest headlines <small>AUTO-UPDATED TWICE DAILY · {{UPDATED}}</small></h2>
+<div class="hls">
+{{LATEST}}
+</div>
+</section>
+
+<h2 class="sec" data-c="featured">Featured stories <small>EDITORIAL · WRITTEN 31 OCT 2026</small></h2>
+
+<section class="lead s" data-c="politics">
+<span class="tag politics">Politics</span><span class="meta">Late October 2026 · via OC Media</span>
+<h2>Kadyrov brands Chechens who left for Europe “despicable traitors”</h2>
+<p>Chechnya’s leader, Ramzan Kadyrov, has launched a fresh verbal attack on the diaspora, describing Chechens who fled to Europe and criticise the republic’s authorities as “pseudo-patriots” who have cut themselves off from their roots. He said they are unwanted at home and that there is no way back for them.</p>
+<p>In his telling, these exiles live on foreign money, spread rumours about their own people and undermine the peace that, he says, thousands of Chechen men died to secure. He added that Chechen soil has no place for anyone who betrays the memory of those he calls heroes.</p>
+<p>The message was posted on his Telegram channel alongside a video of him picking pomegranates, strolling through Grozny with associates and singing a Chechen song. He did not say what prompted it. Critics and rights groups have long said that relatives of Kadyrov’s opponents abroad face pressure inside Chechnya.</p>
+<a class="src" href="https://oc-media.org/kadyrov-calls-chechens-who-left-for-europe-despicable-traitors/" target="_blank" rel="noopener">Read the original at OC Media →</a>
+</section>
+
+<div class="grid">
+
+<article class="s" data-c="security">
+<span class="tag security">Security</span><span class="meta">Oct 2026 · OC Media</span>
+<h2>Shootout confirmed as opposition claims unrest</h2>
+<p>Kadyrov said one person suspected of sabotage was killed and another detained, after a meeting with law-enforcement chiefs. Interior Minister Aslan Iraskhanov told him that police work had identified people linked to “acts of sabotage committed in the past”.</p>
+<p>Kadyrov gave no date, place or method, and said nothing about security-force casualties. The opposition group NIYSO alleges that some officers were killed. OC Media notes it is the first armed incident officially confirmed in Chechnya in more than a year.</p>
+<p>At the same meeting Kadyrov argued that if a man takes up arms and kills an officer, his whole family should bear responsibility – a stance rights groups have repeatedly condemned as collective punishment.</p>
+<a class="src" href="https://oc-media.org/kadyrov-confirms-death-in-shootout-after-opposition-movement-claims-unrest-in-chechnya/" target="_blank" rel="noopener">Source: OC Media →</a>
+</article>
+
+<article class="s" data-c="politics">
+<span class="tag politics">Politics</span><span class="meta">5 Oct 2026 · OC Media</span>
+<h2>Fifth term begins on Kadyrov’s 50th birthday</h2>
+<p>Kadyrov was sworn in for a fifth term on Monday 5 October, the day he turned 50, promising in his speech to respect residents’ rights. He has run the republic since 2007.</p>
+<p>Official results from the 18–20 September vote gave him 99.85% (about 830,000 votes) on a reported turnout of 95.19% – higher than his previous record. Observers outside the official system treat such numbers with deep scepticism.</p>
+<p>OC Media pairs the ceremony with the human-rights record: Human Rights Watch’s 2026 report says authorities kept targeting relatives of his opponents in 2025, while the Memorial centre describes a new wave of raids, abductions and forced contract-signing with the Defence Ministry.</p>
+<a class="src" href="https://oc-media.org/kadyrov-starts-fifth-term-as-chechen-head-promising-to-defend-residents-rights/" target="_blank" rel="noopener">Source: OC Media →</a>
+</article>
+
+<article class="s" data-c="security">
+<span class="tag security">Security</span><span class="meta">30 Oct 2026 · OC Media digest</span>
+<h2>Another group of Chechen “volunteers” sent to Ukraine</h2>
+<p>On 30 October Kadyrov announced on Telegram that a new contingent of what he described as volunteers was being dispatched to the war in Ukraine. Chechen authorities announce such departures regularly.</p>
+<p>Critics doubt that everyone going is doing so willingly. Memorial’s 2026 reporting describes raids, abductions and pressure to sign military contracts, which is the backdrop to those doubts. The official line, as always, is that recruits are enthusiastic.</p>
+<a class="src" href="https://oc-media.org/friday-30-october-2026/" target="_blank" rel="noopener">Source: OC Media →</a>
+</article>
+
+<article class="s" data-c="society">
+<span class="tag society">Society</span><span class="meta">Jul 2026 · Novaya Gazeta Europe</span>
+<h2>Half of divorced couples “reunited” – often under pressure</h2>
+<p>State TV reports that since a commission was created in July 2017, it has run 25,124 inspections and found 6,020 divorced couples. After its intervention 3,038 couples got back together, 2,344 declined, and 905 could not reconcile for religious reasons.</p>
+<p>The independent outlet Caucasian Knot reports that most of these reunions happen under duress, and residents commenting online say reconciliations are “voluntary-compulsory”.</p>
+<p>The campaign follows a spike in divorces: official figures show 9,070 in 2022, with Chechnya’s rate of 437 per 100,000 in 2024 well above neighbouring Ingushetia, Kabardino-Balkaria and Karachay-Cherkessia.</p>
+<a class="src" href="https://novayagazeta.eu/en/articles/2026/07/13/chechen-government-has-reunited-over-half-of-divorced-couples-since-2017-often-by-coercion-en-news" target="_blank" rel="noopener">Source: Novaya Gazeta Europe →</a>
+</article>
+
+<article class="s" data-c="people">
+<span class="tag people">People</span><span class="meta">2026 · Moscow Times, OC Media, Novaya Gazeta</span>
+<h2>Health rumours and the succession question</h2>
+<p>Exiled media reported earlier this year that Kadyrov was seriously ill; Ukrainian outlets cited kidney failure. These claims are unverified. Chechen officials denied that he was hospitalised after he missed a State Council meeting, and a video of him was published in early January.</p>
+<p>Speculation about a successor focuses on his sons. Adam Kadyrov, secretary of the republic’s Security Council, oversees the police, received the title Hero of Chechnya for a second time in June and appeared in lieutenant’s uniform at a public event in September.</p>
+<p>In February Kadyrov dismissed reports of a serious car crash involving Adam as “fake news”, saying AI can fool anyone.</p>
+<a class="src" href="https://www.themoscowtimes.com/2026/08/06/chechnyas-kadyrov-is-reportedly-gravely-ill-again-heres-what-we-know" target="_blank" rel="noopener">Source: The Moscow Times →</a>
+</article>
+
+</div>
+
+<div class="facts">
+<h3>Quick briefs</h3>
+<div class="brief" data-c="world"><span class="tag world">World</span><b>Aliyev receives Kadyrov.</b> Azerbaijan’s president met Kadyrov on 10 October, according to the Uzbek outlet Zamin.</div>
+<div class="brief" data-c="society"><span class="tag society">Society</span><b>Prayers for the leader.</b> OC Media reports that Chechnya’s mufti has told Chechens they are obliged to pray for Kadyrov.</div>
+<div class="brief" data-c="world"><span class="tag world">World</span><b>Armenia seeks Russian help in murder case.</b> Per Vot Tak, Russia has not answered Armenia’s second request for assistance in investigating the killing of Aishat Baimuradova, a native of Chechnya (reported 26 October).</div>
+<div class="brief" data-c="politics"><span class="tag politics">Politics</span><b>Army general.</b> OC Media also notes Putin promoted Kadyrov to the rank of army general although he never served in the army.</div>
+</div>
+
+<div class="facts">
+<h3>Key facts</h3>
+<ul>
+<li><b>Leader:</b> Ramzan Kadyrov, in power since 2007; born 5 October 1976.</li>
+<li><b>Election:</b> 18–20 Sept 2026, 99.85% of the vote, turnout 95.19%.</li>
+<li><b>Capital:</b> Grozny.</li>
+<li><b>Funding:</b> Heavily reliant on federal subsidies from Moscow.</li>
+</ul>
+</div>
+
+</main>
+
+<footer>
+Headlines are collected automatically from public news feeds and link to the original publishers. Featured stories were compiled 31 Oct 2026 from freely available reports and are summarised in our own words and link to the original publishers. Some sources are state-linked, others independent or foreign – read several. Claims by officials or opposition groups are marked as claims and are not independently verified.
+</footer>
+
+<script>
+document.getElementById('nav').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var f=b.dataset.f;
+  document.querySelectorAll('nav button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('[data-c]').forEach(function(el){
+    var c=el.dataset.c;
+    el.classList.toggle('hide',!(f==='all'||c===f));
+  });
+});
+</script>
+</body>
+</html>
